@@ -18,12 +18,13 @@ Return:
 
 
 */
+require_once("../lib/sql.php");
 
 $return=array("error"=>"", "results"=>array());
 
-$action=(isset($_GET['a']))?$_GET('a'):null;
-$key=(isset($_GET['k']))?$_GET('k'):null;
-$format=(isset($_GET['f']))?$_GET('f'):"json";
+$action=(isset($_GET['a']))?$_GET['a']:null;
+$key=(isset($_GET['k']))?$_GET['k']:null;
+$format=(isset($_GET['f']))?$_GET['f']:"json";
 
 
 //default with no parameters
@@ -39,12 +40,15 @@ switch($action){
 	break;
 
 	case "getPhotos":
-
+		$return['results']=array("image1"=>array("thumb"=>"blahblah.jpg","full"=>"blahblah.jpg"));
 	break;
 
 	case "getTag":
 		//check if key exists in DB
-
+			$query="select hash from hashtag where id='$key'";
+			$res = $dbh->prepare($query);
+				$res->execute();
+			//echo '<pre>'.print_r($res,true).'</pre>';
 		//if exists return the tag
 		//else generate and return
 		$return['results']=array("tag"=>"randomness");
