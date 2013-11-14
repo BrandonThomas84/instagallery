@@ -10,7 +10,6 @@ $result = mysql_fetchAll($query);
 
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,13 +39,12 @@ $result = mysql_fetchAll($query);
   <link rel="apple-touch-icon-precomposed" href="../img/apple-touch-icon-57-precomposed.png">
   <link rel="shortcut icon" href="../img/favicon.png">
   
-	<script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/bootbox.min.js"></script>
 	<script type="text/javascript" src="../js/jquery.preview.js"></script>
 	<script type="text/javascript" src="../js/scripts.js"></script>
 </head>
-
 <body>
 <div class="container">
 	<div class="row clearfix">
@@ -109,7 +107,7 @@ $('.block-photo').click(function(e) {
             $.ajax({
                 type: 'post',
                 url: site_url + 'admin/approvephoto.php',
-                data: {row_ id: id, task: 'block'},
+                data: {row_id: id, task: "block"},
                 success: function(b) {
                     if (b) {
                         //delete row
@@ -139,7 +137,7 @@ $('.approve-photo').click(function(e) {
             $.ajax({
                 type: 'post',
                 url: site_url + 'admin/approvephoto.php',
-                data: {row_id: id, task: 'approve'},
+                data: {row_id: id, task: "approve"},
                 success: function(b) {
                     if (b) {
                         //delete row
