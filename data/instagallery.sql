@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.29)
 # Database: instagallery
-# Generation Time: 2013-11-14 17:09:09 +0000
+# Generation Time: 2013-11-14 19:48:12 +0000
 # ************************************************************
 
 
@@ -32,6 +32,8 @@ CREATE TABLE `hashdetail` (
   `approved` int(1) DEFAULT NULL,
   `image_full` varchar(255) DEFAULT NULL,
   `image_thumb` varchar(255) DEFAULT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `text` text,
   PRIMARY KEY (`id`),
   KEY `hash` (`hash`),
   KEY `image_full` (`image_full`),
@@ -41,10 +43,13 @@ CREATE TABLE `hashdetail` (
 LOCK TABLES `hashdetail` WRITE;
 /*!40000 ALTER TABLE `hashdetail` DISABLE KEYS */;
 
-INSERT INTO `hashdetail` (`id`, `hash`, `site_value`, `approved`, `image_full`, `image_thumb`)
+INSERT INTO `hashdetail` (`id`, `hash`, `site_value`, `approved`, `image_full`, `image_thumb`, `username`, `text`)
 VALUES
-	(1,'SAM_1234','sam1234',0,'http://distilleryimage8.s3.amazonaws.com/20b4b9844cc511e39f620ac472ead80b_8.jpg','http://distilleryimage8.s3.amazonaws.com/20b4b9844cc511e39f620ac472ead80b_5.jpg'),
-	(2,'SAM_1234','sam1234',0,'http://distilleryimage2.s3.amazonaws.com/88d2f7164cc411e3b246127664f558c0_8.jpg','http://distilleryimage2.s3.amazonaws.com/88d2f7164cc411e3b246127664f558c0_5.jpg');
+	(1,'SAM_1234','sam1234',2,'http://distilleryimage8.s3.amazonaws.com/20b4b9844cc511e39f620ac472ead80b_8.jpg','http://distilleryimage8.s3.amazonaws.com/20b4b9844cc511e39f620ac472ead80b_5.jpg',NULL,NULL),
+	(2,'SAM_1234','sam1234',1,'http://distilleryimage2.s3.amazonaws.com/88d2f7164cc411e3b246127664f558c0_8.jpg','http://distilleryimage2.s3.amazonaws.com/88d2f7164cc411e3b246127664f558c0_5.jpg',NULL,NULL),
+	(3,'SAM_1234','sam1234',1,'http://distilleryimage5.s3.amazonaws.com/3d8c7e1a4d5711e38fe4125be5bdf6a9_8.jpg','http://distilleryimage5.s3.amazonaws.com/3d8c7e1a4d5711e38fe4125be5bdf6a9_5.jpg',NULL,NULL),
+	(4,'SAM_1234','sam1234',1,'http://distilleryimage5.s3.amazonaws.com/9f1626004d5b11e3b14a12e478479d96_8.jpg','http://distilleryimage5.s3.amazonaws.com/9f1626004d5b11e3b14a12e478479d96_5.jpg',NULL,NULL),
+	(5,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*!40000 ALTER TABLE `hashdetail` ENABLE KEYS */;
 UNLOCK TABLES;
