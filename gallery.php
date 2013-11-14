@@ -21,7 +21,7 @@ $result = mysql_fetchAll($query);
 <html>
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-		<title>Galleriffic | Thumbnail rollover effects and slideshow crossfades</title>
+		<title>Instagallery</title>
 		<link rel="stylesheet" href="css/basic.css" type="text/css" />
 		<link rel="stylesheet" href="css/galleriffic-2.css" type="text/css" />
 		<script type="text/javascript" src="js/jquery.min.js"></script>
