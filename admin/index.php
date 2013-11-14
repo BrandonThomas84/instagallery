@@ -10,7 +10,6 @@ if(isset($_GET['filter'])){
 }else{
     $query="SELECT id, hash, site_value, approved, image_full, image_thumb FROM hashdetail where approved=0;";
 }
-echo $query;
 $result = mysql_fetchAll($query);
 
 
