@@ -41,7 +41,7 @@ CREATE TABLE `hashdetail` (
 
 LOCK TABLES `hashdetail` WRITE;
 /*!40000 ALTER TABLE `hashdetail` DISABLE KEYS */;
-INSERT INTO `hashdetail` VALUES (1,'SAM_1234','sam1234',1,'http://distilleryimage6.ak.instagram.com/d2464e1a2aba11e3891a22000a9d0ec6_8.jpg','http://distilleryimage6.ak.instagram.com/d2464e1a2aba11e3891a22000a9d0ec6_5.jpg');
+INSERT INTO `hashdetail` VALUES (1,'SAMM01234','sam1234',1,'http://distilleryimage6.ak.instagram.com/d2464e1a2aba11e3891a22000a9d0ec6_8.jpg','http://distilleryimage6.ak.instagram.com/d2464e1a2aba11e3891a22000a9d0ec6_5.jpg');
 /*!40000 ALTER TABLE `hashdetail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,7 +68,7 @@ CREATE TABLE `hashtag` (
 
 LOCK TABLES `hashtag` WRITE;
 /*!40000 ALTER TABLE `hashtag` DISABLE KEYS */;
-INSERT INTO `hashtag` VALUES (1,'SAM_1234','2013-11-13 16:13:28','sam1234');
+INSERT INTO `hashtag` VALUES (1,'SAMM01234','2013-11-13 16:13:28','sam1234');
 /*!40000 ALTER TABLE `hashtag` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
