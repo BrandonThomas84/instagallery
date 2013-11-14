@@ -6,10 +6,11 @@ error_reporting(E_ALL);
 require_once("../lib/sql.php");
 
 if(isset($_GET['filter'])){
-    $query="SELECT id, hash, site_value, approved, image_full, image_thumb FROM hashdetail where hashtag='".$_GET['filter']."';";
+    $query="SELECT id, hash, site_value, approved, image_full, image_thumb FROM hashdetail where hash='".$_GET['filter']."';";
 }else{
     $query="SELECT id, hash, site_value, approved, image_full, image_thumb FROM hashdetail where approved=0;";
 }
+echo $query;
 $result = mysql_fetchAll($query);
 
 
