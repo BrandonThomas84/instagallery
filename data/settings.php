@@ -13,4 +13,7 @@ $numHashChars=4;
 /*images*/
 $defaultLimit=10;
 
+/*status*/
+$statusvalue = array("New","Approved","Blocked");
+
 ?>

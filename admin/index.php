@@ -69,13 +69,14 @@ $result = mysql_fetchAll($query);
       <form action="./" method="get">
         <label>Filter by Hashtag: </label><input name="filter" type="txt">
       </form>
+      <a href="/cron/instaCron.php?refresh=Now">Refresh</a>
 <?php
 
 			echo '<table class="table table-hover table-condensed table-bordered" id="approvetable">';
 			echo '<thead>';
 			echo '<tr>';
 			echo '<th>Actions</th>';
-			echo '<th>ID</th>';
+			echo '<th>Status</th>';
 			echo '<th>Hash</th>';
 			echo '<th>Site Value</th>';
 			echo '<th>Thumbnail</th>';
@@ -86,7 +87,7 @@ $result = mysql_fetchAll($query);
 			{
 			   echo '<tr id="ordrrow-'.$row["id"].'">';
 			   echo '<td> <a class="btn btn-danger block-photo" href="" id="'.$row["id"].'">Block</a> <a class="btn btn-success approve-photo" href="" id="'.$row["id"].'">Approve</a> </td>';
-			   echo "<td>".$row["id"]."</td>";
+			   echo '<td id="status_'.$row["id"].'">'.$statusvalue[$row["approved"]].'</td>';
 			   echo "<td>".$row["hash"]."</td>";
 			   echo "<td>".$row["site_value"]."</td>";
 			   echo '<td> <a rel="'.$row["image_full"].'" class="screenshot"><img src="'.$row["image_thumb"].'"></a></td>';
@@ -108,12 +109,14 @@ $result = mysql_fetchAll($query);
 
 
 <script type="text/javascript">
+var isfilterset = "<?php if(isset($_GET['filter'])){ echo 'true'; } else { echo 'false';} ?>";
+
 
 $('.block-photo').click(function(e) {
     var id = $(this).attr('id');
     e.preventDefault();
-    bootbox.confirm("Are you sure? ", function(r) {
-        if (r) {
+   // bootbox.confirm("Are you sure? ", function(r) {
+       // if (r) {
             //sent request to delete order with given id
             $.ajax({
                 type: 'post',
@@ -122,7 +125,14 @@ $('.block-photo').click(function(e) {
                 success: function(b) {
                     if (b) {
                         //delete row
-                        $('tr#ordrrow-' + id).remove();
+                        if (isfilterset == 'true')
+                        {
+                          $('td#status_'+id).html('Blocked');
+                        }
+                        else
+                        {
+                          $('tr#ordrrow-' + id).remove();
+                        }
                     } else {
                         //failed to delete, sent noty in
                         noty({
@@ -134,16 +144,16 @@ $('.block-photo').click(function(e) {
                     }
                 }
             });
-        }
-    });
+        //}
+    //});
 });
 
 
 $('.approve-photo').click(function(e) {
     var id = $(this).attr('id');
     e.preventDefault();
-    bootbox.confirm("Are you sure? ", function(r) {
-        if (r) {
+    //bootbox.confirm("Are you sure? ", function(r) {
+    //    if (r) {
             //sent request to delete order with given id
             $.ajax({
                 type: 'post',
@@ -152,7 +162,14 @@ $('.approve-photo').click(function(e) {
                 success: function(b) {
                     if (b) {
                         //delete row
-                        $('tr#ordrrow-' + id).remove();
+                        if (isfilterset == 'true')
+                        {
+                          $('td#status_'+id).html('Approved');
+                        }
+                        else
+                        {
+                          $('tr#ordrrow-' + id).remove();
+                        }
                     } else {
                         //failed to delete, sent noty in
                         noty({
@@ -164,8 +181,8 @@ $('.approve-photo').click(function(e) {
                     }
                 }
             });
-        }
-    });
+       // }
+    //});
 });
 
 </script>
