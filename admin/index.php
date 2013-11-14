@@ -5,7 +5,11 @@ error_reporting(E_ALL);
 
 require_once("../lib/sql.php");
 
-$query="SELECT id, hash, site_value, approved, image_full, image_thumb FROM hashdetail where approved=0;";
+if(isset($_GET['filter'])){
+    $query="SELECT id, hash, site_value, approved, image_full, image_thumb FROM hashdetail where hashtag='".$_GET['filter']."';";
+}else{
+    $query="SELECT id, hash, site_value, approved, image_full, image_thumb FROM hashdetail where approved=0;";
+}
 $result = mysql_fetchAll($query);
 
 
@@ -62,7 +66,9 @@ $result = mysql_fetchAll($query);
 					Please use the grid below to approve pending images.
 				</p>
 			</div>
-
+      <form action="./" method="get">
+        <label>Filter by Hashtag: </label><input name="filter" type="txt">
+      </form>
 <?php
 
 			echo '<table class="table table-hover table-condensed table-bordered" id="approvetable">';
