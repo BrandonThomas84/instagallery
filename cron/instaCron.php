@@ -44,5 +44,10 @@ foreach($mysql_results as $result){
     }
 }
 
+if($_REQUEST['refresh'])
+{
+    header('Location:/admin/index.php');
+}
+
 
 
