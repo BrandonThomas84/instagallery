@@ -61,7 +61,9 @@ $result = mysql_fetchAll($query);
                         // echo '<div class="download">';
                         // echo '<a href="http://farm2.static.flickr.com/1260/930424599_e75865c0d6_b.jpg">Download Original</a>';
                         // echo '</div>';
-                        echo '<div class="image-title">'.$row["username"].'</div>';
+                        if(!empty($row["username"])){
+	                        echo '<div class="image-title"><a target="_blank" href="http://instagram.com/'.$row["username"].'">@'.$row["username"].'</a></div>';
+	                    }
                         echo '<div class="image-desc">'.$row["text"].'</div>';
                         echo '</div>';
                         echo '</li>';
