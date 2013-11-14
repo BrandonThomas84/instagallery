@@ -113,7 +113,7 @@
 	<body>
 		<script>
 			(function() {
-			  var instaGalleryAPI = "http://local.instagallery.com/api/index.php?a=getPhotos&k=sam1234&f=j";
+			  var instaGalleryAPI = "http://local.instagallery.com/api/index.php?a=getPhotos&k=sam1234&f=j&l=5";
 			  $.getJSON( instaGalleryAPI, {
 			    format: "json"
 			  })
