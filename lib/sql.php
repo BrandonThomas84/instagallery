@@ -25,6 +25,21 @@ function mysql_fetch($query){
 	return $res->fetch(PDO::FETCH_ASSOC);
 }
 
+function mysql_fetchAll($query){
+	global $dbh;
+	$res = $dbh->prepare($query);
+	if (!$res) {
+	    echo "\nPDO::errorInfo():\n";
+	    print_r($dbh->errorInfo());
+	}
+	$res->execute();
+	if (!$res) {
+	    echo "\nPDO::errorInfo():\n";
+	    echo '<pre>'.print_r($dbh->errorInfo(),true).'</pre>';
+	}
+	return $res->fetchAll(PDO::FETCH_ASSOC);
+}
+
 function mysql_insert($query){
 	global $dbh;
 	$res = $dbh->prepare($query);
