@@ -69,7 +69,7 @@ $result = mysql_fetchAll($query);
       <form action="./" method="get">
         <label>Filter by Hashtag: </label><input name="filter" type="txt">
       </form>
-      <a href="/cron/instaCron.php?refresh=Now">Refresh</a>
+      <a href="cron/instaCron.php?refresh=Now">Refresh</a>
 <?php
 
 			echo '<table class="table table-hover table-condensed table-bordered" id="approvetable">';

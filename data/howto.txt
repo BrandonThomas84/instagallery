@@ -2,5 +2,5 @@ to dump run this:
 mysqldump -h localhost -u root -p --single-transaction instagallery > instagallery.sql 
 
 to import run this:
-echo "drop database instagallery" |  mysql -p -u root && \ echo "create database instagallery" | mysql  -p -u root && \
-pv -petr instagallery.sql | mysql -h localhost -p -u root instagallery
+echo "drop database instagallery" |  mysql -proot -u root && echo "create database instagallery" | mysql  -proot -u root && 
+pv -petr instagallery.sql | mysql -h localhost -proot -u root instagallery

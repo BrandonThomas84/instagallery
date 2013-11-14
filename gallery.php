@@ -21,7 +21,7 @@ $result = mysql_fetchAll($query);
 <html>
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-		<title>Galleriffic | Thumbnail rollover effects and slideshow crossfades</title>
+		<title>Instagallery</title>
 		<link rel="stylesheet" href="css/basic.css" type="text/css" />
 		<link rel="stylesheet" href="css/galleriffic-2.css" type="text/css" />
 		<script type="text/javascript" src="js/jquery.min.js"></script>
@@ -61,7 +61,9 @@ $result = mysql_fetchAll($query);
                         // echo '<div class="download">';
                         // echo '<a href="http://farm2.static.flickr.com/1260/930424599_e75865c0d6_b.jpg">Download Original</a>';
                         // echo '</div>';
-                        echo '<div class="image-title">'.$row["username"].'</div>';
+                        if(!empty($row["username"])){
+	                        echo '<div class="image-title"><a target="_blank" href="http://instagram.com/'.$row["username"].'">@'.$row["username"].'</a></div>';
+	                    }
                         echo '<div class="image-desc">'.$row["text"].'</div>';
                         echo '</div>';
                         echo '</li>';
