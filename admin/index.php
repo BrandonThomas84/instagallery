@@ -43,6 +43,7 @@ $result = mysql_fetchAll($query);
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/bootbox.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.preview.js"></script>
 	<script type="text/javascript" src="../js/scripts.js"></script>
 </head>
 
@@ -79,7 +80,8 @@ $result = mysql_fetchAll($query);
 			   echo "<td>".$row["id"]."</td>";
 			   echo "<td>".$row["hash"]."</td>";
 			   echo "<td>".$row["site_value"]."</td>";
-			   echo '<td> <img src="'.$row["image_thumb"].'"></td>';
+			   echo '<td> <a href="#" rel="'.$row["image_full"].'" class="screenshot"><img src="'.$row["image_thumb"].'"></a></td>';
+
 			   echo "</tr>";
 			}
 			echo '</tbody>';
@@ -92,6 +94,10 @@ $result = mysql_fetchAll($query);
 </body>
 </html>
 
+
+
+
+
 <script type="text/javascript">
 
 $('.block-photo').click(function(e) {
@@ -102,8 +108,8 @@ $('.block-photo').click(function(e) {
             //sent request to delete order with given id
             $.ajax({
                 type: 'post',
-                url: site_url + 'admin/blockphoto.php',
-                data: {row_id: id},
+                url: site_url + 'admin/approvephoto.php',
+                data: {row_ id: id, task: 'block'},
                 success: function(b) {
                     if (b) {
                         //delete row
@@ -133,7 +139,7 @@ $('.approve-photo').click(function(e) {
             $.ajax({
                 type: 'post',
                 url: site_url + 'admin/approvephoto.php',
-                data: {row_id: id},
+                data: {row_id: id, task: 'approve'},
                 success: function(b) {
                     if (b) {
                         //delete row
