@@ -18,6 +18,7 @@ Return:
 
 
 */
+require_once("../lib/functions.php");
 require_once("../lib/sql.php");
 
 $return=array("error"=>"", "results"=>array());
@@ -45,13 +46,23 @@ switch($action){
 
 	case "getTag":
 		//check if key exists in DB
-			$query="select hash from hashtag where id='$key'";
-			$res = $dbh->prepare($query);
-				$res->execute();
-			//echo '<pre>'.print_r($res,true).'</pre>';
-		//if exists return the tag
-		//else generate and return
-		$return['results']=array("tag"=>"randomness");
+			$query="select hash from hashtag where site_value='$key'";
+			$result = mysql_fetch($query);
+			// $res = $dbh->prepare($query);
+			// 	$res->execute();
+			// 	$result = $res->fetch(PDO::FETCH_ASSOC);
+			
+		if($result===false){
+			//not found, generate
+			$hash="build".generateRandomString($numHashChars);
+			//need to check if unique
+			
+			$query="insert into hashtag (site_value,hash,lastupdate) values ('$key','$hash', now())";
+			$result = mysql_insert($query);
+		}else{
+			$hash=$result['hash'];
+		}
+		$return['results']=array("tag"=>$hash);
 	break;
 
 }
