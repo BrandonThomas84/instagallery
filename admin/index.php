@@ -103,7 +103,7 @@ $('.block-photo').click(function(e) {
             $.ajax({
                 type: 'post',
                 url: site_url + 'admin/approvephoto.php',
-                data: {row_id: id, task: 'block'},
+                data: {row_ id: id, task: 'block'},
                 success: function(b) {
                     if (b) {
                         //delete row
