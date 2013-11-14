@@ -22,7 +22,7 @@ Return:
 	{"error":"<error_message>","results":{"<site_key>":{"thumb":"<url>","full":"<url>"}},"tag":"<tag_name>"}
 
 */
-require_once("../lib/functions.php");
+require_once(str_replace("/api","",dirname(__FILE__))."/lib/functions.php");
 
 $return=array("error"=>"", "results"=>array(), "tag"=>"");
 

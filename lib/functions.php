@@ -1,6 +1,6 @@
 <?php
-require_once("../data/settings.php");
-require_once("../lib/sql.php");
+require_once(str_replace("/lib","",dirname(__FILE__))."/data/settings.php");
+require_once($rootPath."/lib/sql.php");
 
 
 function generateRandomString($length = 10) {

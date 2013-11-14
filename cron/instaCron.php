@@ -1,6 +1,6 @@
 <?php
 // Supply a user id and an access token
-require_once("../lib/functions.php");
+require_once(str_replace("/cron","",dirname(__FILE__))."/lib/functions.php");
 
 $clientId = 'c6f64314c0484c1382b26739a4502cd2';
 
