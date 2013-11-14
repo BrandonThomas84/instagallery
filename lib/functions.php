@@ -45,3 +45,15 @@ function get_images($hash,$limit){
 	}
 	return $images;
 }
+
+function findImg($img)
+{
+    $noImg = true;
+    $mysql_find_img_query = "SELECT * FROM hashdetail WHERE image_full = '{$img}';";
+
+    $img_fetch = mysql_fetch($mysql_find_img_query);
+    if(!$img_fetch){
+        $noImg = false;
+    }
+    return $noImg;
+}

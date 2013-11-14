@@ -1,8 +1,9 @@
 <?php
 // Supply a user id and an access token
+require_once("../lib/functions.php");
 
 $clientId = 'c6f64314c0484c1382b26739a4502cd2';
-$tag = 'Kasi';
+
 
 // Gets our data
 function fetchData($url){
@@ -15,15 +16,33 @@ function fetchData($url){
     return $result;
 }
 
+$mysql_query = 'SELECT * FROM hashtag';
+$mysql_results = mysql_fetchAll($mysql_query);
+
+
+foreach($mysql_results as $result){
 // Pulls and parses data.
-$query = fetchData("https://api.instagram.com/v1/tags/{$tag}/media/recent?client_id={$clientId}&count=0");
+   $tag = $result['hash'];
+   $site_value = $result['site_value'];
+   $hash = $result['hash'];
 
-$result = json_decode($query);
+    $insta_query = fetchData("https://api.instagram.com/v1/tags/{$tag}/media/recent?client_id={$clientId}&count=0");
 
-?>
-<?php foreach ($result->data as $post): ?>
+    $result = json_decode($insta_query);
 
-    <!-- Renders images. @Options (thumbnail,low_resoulution, high_resolution) -->
-    <a class="group" rel="group1" href="<?php echo $post->images->standard_resolution->url ?>"><img src="<?php echo $post->images->thumbnail->url ?>"></a>
-<?php endforeach ?>
-</html>
+    foreach ($result->data as $post){
+        $full_img = $post->images->standard_resolution->url;
+        $thumb_img = $post->images->thumbnail->url;
+        $approved = 0;
+
+        if(!findImg($full_img))
+        {
+            $insert_query = "INSERT INTO hashdetail (id, hash, site_value, approved, image_full, image_thumb) VALUES (NULL, '".$hash."', '".$site_value."', '0', '".$full_img."', '".$thumb_img."');";
+            mysql_insert($insert_query);
+        }
+
+    }
+}
+
+
+
