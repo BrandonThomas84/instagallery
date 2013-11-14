@@ -33,18 +33,20 @@ foreach($mysql_results as $result){
     foreach ($result->data as $post){
         $full_img = $post->images->standard_resolution->url;
         $thumb_img = $post->images->thumbnail->url;
+        $username = $post->caption->from->username;
+        $text = $post->caption->text;
         $approved = 0;
 
         if(!findImg($full_img))
         {
-            $insert_query = "INSERT INTO hashdetail (id, hash, site_value, approved, image_full, image_thumb) VALUES (NULL, '".$hash."', '".$site_value."', '0', '".$full_img."', '".$thumb_img."');";
+            $insert_query = "INSERT INTO hashdetail (id, hash, site_value, approved, image_full, image_thumb, username, text) VALUES (NULL, '".$hash."', '".$site_value."', '0', '".$full_img."', '".$thumb_img."', '".$username."','".$text."');";
             mysql_insert($insert_query);
         }
 
     }
 }
 
-if($_REQUEST['refresh'])
+if(isset($_REQUEST['refresh']))
 {
     header('Location:/admin/index.php');
 }
