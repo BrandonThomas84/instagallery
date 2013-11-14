@@ -1,5 +1,5 @@
 <?php
-require_once("../data/settings.php");
+require_once(str_replace("/lib","",dirname(__FILE__))."/data/settings.php");
 try {
 	$dbh = new PDO('mysql:host=localhost;dbname='.$dbname, $user, $pass, array(
 	    PDO::ATTR_PERSISTENT => true

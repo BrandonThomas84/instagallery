@@ -3,7 +3,7 @@
 ini_set('display_errors',1); 
 error_reporting(E_ALL);
 
-require_once("../lib/sql.php");
+require_once(str_replace("/admin","",dirname(__FILE__))."/lib/sql.php");
 
 if(isset($_GET['filter'])){
     $query="SELECT id, hash, site_value, approved, image_full, image_thumb FROM hashdetail where hash='".$_GET['filter']."';";

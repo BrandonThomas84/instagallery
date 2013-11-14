@@ -4,7 +4,7 @@ row_id:
 task:approve(1)/block(2)
 */
 
-require_once("../lib/functions.php");
+require_once(str_replace("/admin","",dirname(__FILE__))."/lib/functions.php");
 
 $return=array("error"=>"", "response"=>"fail");
 
