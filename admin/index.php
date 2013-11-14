@@ -5,7 +5,11 @@ error_reporting(E_ALL);
 
 require_once("../lib/sql.php");
 
-$query="SELECT id, hash, site_value, approved, image_full, image_thumb FROM hashdetail where approved=0;";
+if(isset($_GET['filter'])){
+    $query="SELECT id, hash, site_value, approved, image_full, image_thumb FROM hashdetail where hash='".$_GET['filter']."';";
+}else{
+    $query="SELECT id, hash, site_value, approved, image_full, image_thumb FROM hashdetail where approved=0;";
+}
 $result = mysql_fetchAll($query);
 
 
@@ -49,6 +53,11 @@ $result = mysql_fetchAll($query);
 <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
+
+      <div class="logo">
+        <img src="../img/InstaGalleryLogo.png" />
+      </div>
+
 			<div class="jumbotron well">
 				<h1>
 					Approve!
@@ -57,10 +66,12 @@ $result = mysql_fetchAll($query);
 					Please use the grid below to approve pending images.
 				</p>
 			</div>
-
+      <form action="./" method="get">
+        <label>Filter by Hashtag: </label><input name="filter" type="txt">
+      </form>
 <?php
 
-			echo '<table class="table table-hover table-condensed table-bordered">';
+			echo '<table class="table table-hover table-condensed table-bordered" id="approvetable">';
 			echo '<thead>';
 			echo '<tr>';
 			echo '<th>Actions</th>';
@@ -74,11 +85,11 @@ $result = mysql_fetchAll($query);
 			foreach ($result as $row)
 			{
 			   echo '<tr id="ordrrow-'.$row["id"].'">';
-			   echo '<td> <a class="btn btn-danger block-photo" href="#" id="'.$row["id"].'">Block</a> <a class="btn btn-success approve-photo" href="#" id="'.$row["id"].'">Approve</a> </td>';
+			   echo '<td> <a class="btn btn-danger block-photo" href="" id="'.$row["id"].'">Block</a> <a class="btn btn-success approve-photo" href="" id="'.$row["id"].'">Approve</a> </td>';
 			   echo "<td>".$row["id"]."</td>";
 			   echo "<td>".$row["hash"]."</td>";
 			   echo "<td>".$row["site_value"]."</td>";
-			   echo '<td> <a href="#" rel="'.$row["image_full"].'" class="screenshot"><img src="'.$row["image_thumb"].'"></a></td>';
+			   echo '<td> <a rel="'.$row["image_full"].'" class="screenshot"><img src="'.$row["image_thumb"].'"></a></td>';
 
 			   echo "</tr>";
 			}
@@ -107,11 +118,11 @@ $('.block-photo').click(function(e) {
             $.ajax({
                 type: 'post',
                 url: site_url + 'admin/approvephoto.php',
-                data: {row_id: id, task: "block"},
+                data: {row_id: id, task: 'block'},
                 success: function(b) {
                     if (b) {
                         //delete row
-                        orTable.fnDeleteRow($('tr#ordrrow-' + id)[0]);
+                        $('tr#ordrrow-' + id).remove();
                     } else {
                         //failed to delete, sent noty in
                         noty({
@@ -141,7 +152,7 @@ $('.approve-photo').click(function(e) {
                 success: function(b) {
                     if (b) {
                         //delete row
-                        orTable.fnDeleteRow($('tr#ordrrow-' + id)[0]);
+                        $('tr#ordrrow-' + id).remove();
                     } else {
                         //failed to delete, sent noty in
                         noty({
