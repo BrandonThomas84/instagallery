@@ -17,10 +17,6 @@ function get_hash($key){
 	//check if key exists in DB
 		$query="select hash from hashtag where site_value='$key'";
 		$result = mysql_fetch($query);
-		// $res = $dbh->prepare($query);
-		// 	$res->execute();
-		// 	$result = $res->fetch(PDO::FETCH_ASSOC);
-		
 	if($result===false){
 		//not found, generate
 		$hash="build".generateRandomString($numHashChars);
@@ -37,11 +33,11 @@ function get_hash($key){
 }
 
 function get_images($hash,$limit){
-	$query="SELECT site_value,image_full, image_thumb FROM hashdetail where approved=1 and hash='$hash' limit 0,$limit;";
+	$query="SELECT id,site_value,image_full, image_thumb FROM hashdetail where approved=1 and hash='$hash' limit 0,$limit;";
 	$result = mysql_fetchAll($query);
 	$images=array();
 	foreach ($result as $row) {
-		$images[$row['site_value']]=array("thumb"=>$row['image_thumb'],"full"=>$row['image_full']);
+		$images[$row['id']]=array("thumb"=>$row['image_thumb'],"full"=>$row['image_full']);
 	}
 	return $images;
 }
