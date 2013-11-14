@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 require_once("lib/sql.php");
 
 if(isset($_GET['filter'])){
-    $query="SELECT id, hash, site_value, approved, image_full, image_thumb FROM hashdetail where approved=1 and hash='".$_GET['filter']."';";
+    $query="SELECT id, hash, site_value, approved, image_full, image_thumb, username, text FROM hashdetail where approved=1 and hash='".$_GET['filter']."';";
 }
 else
 {
@@ -49,25 +49,25 @@ $result = mysql_fetchAll($query);
 				<div id="thumbs" class="navigation">
 					<ul class="thumbs noscript">
 						
-<?php
-			foreach ($result as $row)
-			{
+                <?php
+                    foreach ($result as $row)
+                    {
 
-						echo '<li>';
-						echo '<a class="thumb" href="'.$row["image_full"].'" title="">';
-						echo '<img src="'.$row["image_thumb"].'" width="75" height="75" alt="" />';
-						echo '</a>';
-						echo '<div class="caption">';
-						// echo '<div class="download">';
-						// echo '<a href="http://farm2.static.flickr.com/1260/930424599_e75865c0d6_b.jpg">Download Original</a>';
-						// echo '</div>';
-						echo '<div class="image-title"></div>';
-						echo '<div class="image-desc"></div>';
-						echo '</div>';
-						echo '</li>';	
-			
-			}
-?>
+                        echo '<li>';
+                        echo '<a class="thumb" href="'.$row["image_full"].'" title="">';
+                        echo '<img src="'.$row["image_thumb"].'" width="75" height="75" alt="" />';
+                        echo '</a>';
+                        echo '<div class="caption">';
+                        // echo '<div class="download">';
+                        // echo '<a href="http://farm2.static.flickr.com/1260/930424599_e75865c0d6_b.jpg">Download Original</a>';
+                        // echo '</div>';
+                        echo '<div class="image-title">'.$row["username"].'</div>';
+                        echo '<div class="image-desc">'.$row["text"].'</div>';
+                        echo '</div>';
+                        echo '</li>';
+
+                    }
+                ?>
 
 					</ul>
 				</div>
