@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `hashdetail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `hashdetail` (
-  `id` int(11) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `hash` varchar(10) DEFAULT NULL,
   `site_value` varchar(255) DEFAULT NULL,
   `approved` int(1) DEFAULT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE `hashdetail` (
   PRIMARY KEY (`id`),
   KEY `hash` (`hash`),
   CONSTRAINT `hashdetail_ibfk_1` FOREIGN KEY (`hash`) REFERENCES `hashtag` (`hash`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +41,7 @@ CREATE TABLE `hashdetail` (
 
 LOCK TABLES `hashdetail` WRITE;
 /*!40000 ALTER TABLE `hashdetail` DISABLE KEYS */;
+INSERT INTO `hashdetail` VALUES (1,'SAM_1234','sam1234',1,'http://distilleryimage6.ak.instagram.com/d2464e1a2aba11e3891a22000a9d0ec6_8.jpg','http://distilleryimage6.ak.instagram.com/d2464e1a2aba11e3891a22000a9d0ec6_5.jpg');
 /*!40000 ALTER TABLE `hashdetail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,12 +53,13 @@ DROP TABLE IF EXISTS `hashtag`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `hashtag` (
-  `id` int(11) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `hash` varchar(15) DEFAULT NULL,
   `lastupdate` datetime DEFAULT NULL,
+  `site_value` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `hash` (`hash`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,6 +68,7 @@ CREATE TABLE `hashtag` (
 
 LOCK TABLES `hashtag` WRITE;
 /*!40000 ALTER TABLE `hashtag` DISABLE KEYS */;
+INSERT INTO `hashtag` VALUES (1,'SAM_1234','2013-11-13 16:13:28','sam1234');
 /*!40000 ALTER TABLE `hashtag` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -78,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-11-13 15:05:04
+-- Dump completed on 2013-11-13 16:18:59
