@@ -8,8 +8,8 @@ $mysql_results = mysql_fetchAll($mysql_query);
 <?php echo '<?'; ?>xml version="1.0" encoding="utf-8" standalone="yes"<?php echo '?>'; ?>
 <rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>HELLO THERE</title>
-        <description>TAG WALL</description>
+        <title><?php echo $tag; ?></title>
+        <description><?php echo $tag; ?> WALL</description>
         <link>http://local.instagallery.com/</link>
         <?php foreach($mysql_results as $key => $result):
                 $imgSm = $result['image_thumb'];
@@ -18,7 +18,7 @@ $mysql_results = mysql_fetchAll($mysql_query);
             <item>
                 <title><?php echo htmlspecialchars($result['username']); ?></title>
                 <media:description><?php echo htmlspecialchars($result['text']); ?></media:description>
-
+                <link><?php echo $imgSm; ?></link>
                 <media:thumbnail url="<?php echo $imgSm; ?>"/>
                 <media:content url="<?php echo $imgLg; ?>"/>
             </item>
