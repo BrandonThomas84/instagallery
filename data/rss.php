@@ -18,7 +18,7 @@ $mysql_results = mysql_fetchAll($mysql_query);
             <item>
                 <title><?php echo htmlspecialchars($result['username']); ?></title>
                 <media:description><?php echo htmlspecialchars($result['text']); ?></media:description>
-                <link><?php echo $imgSm; ?></link>
+
                 <media:thumbnail url="<?php echo $imgSm; ?>"/>
                 <media:content url="<?php echo $imgLg; ?>"/>
             </item>

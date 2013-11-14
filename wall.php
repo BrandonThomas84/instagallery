@@ -1,32 +1,32 @@
-<script type="text/javascript">
-
-    var cooliris = {
-        onEmbedInitialized : function() {
-            cooliris.embed.setCallbacks({
-                select: onItemSelected
-            });
-        }
-    };
-
-    function onItemSelected(item) {
-        if(item != null)
-        {
-            var slug = slugify(item.title);
-            cooliris.embed.deselectItem();
-            playerWindow(item.link,'725','350', 'playlist', slug );
-        }
-    }
-    function slugify(text) {
-        text = text.replace(/[^-a-zA-Z0-9,&\s]+/ig, '');
-        text = text.replace(/-/gi, "_");
-        text = text.replace(/\s/gi, "-");
-
-        return (text + '').toLowerCase();
-    }
-</script>
+<!DOCTYPE html>
 <html>
 <head>
+    <script type="text/javascript">
 
+/*        var cooliris = {
+            onEmbedInitialized : function() {
+                cooliris.embed.setCallbacks({
+                    select: onItemSelected
+                });
+            }
+        };
+
+        function onItemSelected(item) {
+            if(item != null)
+            {
+                var slug = slugify(item.title);
+                cooliris.embed.deselectItem();
+                playerWindow(item.link,'725','350', 'playlist', slug );
+            }
+        }
+        function slugify(text) {
+            text = text.replace(/[^-a-zA-Z0-9,&\s]+/ig, '');
+            text = text.replace(/-/gi, "_");
+            text = text.replace(/\s/gi, "-");
+
+            return (text + '').toLowerCase();
+        }*/
+    </script>
 
 </head>
 <body>
