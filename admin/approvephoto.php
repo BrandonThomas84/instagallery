@@ -8,8 +8,8 @@ require_once("../lib/functions.php");
 
 $return=array("error"=>"", "response"=>"fail");
 
-$row_id=(isset($_GET['row_id']))?$_GET['row_id']:null;
-$task=(isset($_GET['task']))?$_GET['task']:null;
+$row_id=(isset($_POST['row_id']))?$_POST['row_id']:null;
+$task=(isset($_POST['task']))?$_POST['task']:null;
 
 if(is_null($row_id)){
 	$return['error']="Please provide a row id;".$error;
