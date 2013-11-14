@@ -48,7 +48,7 @@ foreach($mysql_results as $result){
 
 if(isset($_REQUEST['refresh']))
 {
-    header('Location:/admin/index.php');
+    header('Location:admin/index.php');
 }
 
 
