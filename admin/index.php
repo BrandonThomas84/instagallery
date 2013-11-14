@@ -43,6 +43,7 @@ $result = mysql_fetchAll($query);
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/bootbox.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.preview.js"></script>
 	<script type="text/javascript" src="../js/scripts.js"></script>
 </head>
 
@@ -79,7 +80,8 @@ $result = mysql_fetchAll($query);
 			   echo "<td>".$row["id"]."</td>";
 			   echo "<td>".$row["hash"]."</td>";
 			   echo "<td>".$row["site_value"]."</td>";
-			   echo '<td> <img src="'.$row["image_thumb"].'"></td>';
+			   echo '<td> <a href="#" rel="'.$row["image_full"].'" class="screenshot"><img src="'.$row["image_thumb"].'"></a></td>';
+
 			   echo "</tr>";
 			}
 			echo '</tbody>';
@@ -91,6 +93,10 @@ $result = mysql_fetchAll($query);
 </div>
 </body>
 </html>
+
+
+
+
 
 <script type="text/javascript">
 
