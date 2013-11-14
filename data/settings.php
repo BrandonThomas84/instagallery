@@ -1,5 +1,6 @@
 <?php
 
+$error="";
 
 /* db connect */
 $dbname="instagallery";
@@ -8,5 +9,8 @@ $pass="root";
 
 /* hash */
 $numHashChars=4;
+
+/*images*/
+$defaultLimit=10;
 
 ?>

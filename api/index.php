@@ -14,18 +14,22 @@ Fromat (f):
 	Return format
 	-j for json
 
-Return:
+Optional:	
+Limit (l):
+	Upper limit for number of images to return... default is set in the settings file
 
+Return:
+	{"error":"<error_message>","results":{"<site_key>":{"thumb":"<url>","full":"<url>"}},"tag":"<tag_name>"}
 
 */
 require_once("../lib/functions.php");
-require_once("../lib/sql.php");
 
-$return=array("error"=>"", "results"=>array());
+$return=array("error"=>"", "results"=>array(), "tag"=>"");
 
 $action=(isset($_GET['a']))?$_GET['a']:null;
 $key=(isset($_GET['k']))?$_GET['k']:null;
 $format=(isset($_GET['f']))?$_GET['f']:"json";
+$limit=(isset($_GET['l']))?$_GET['l']:$defaultLimit;
 
 
 //default with no parameters
@@ -41,31 +45,17 @@ switch($action){
 	break;
 
 	case "getPhotos":
-		$return['results']=array("image1"=>array("thumb"=>"blahblah.jpg","full"=>"blahblah.jpg"));
+		$return['tag']=get_hash($key);
+		$return['results']=get_images($return['tag'],$limit);
 	break;
 
-	case "getTag":
-		//check if key exists in DB
-			$query="select hash from hashtag where site_value='$key'";
-			$result = mysql_fetch($query);
-			// $res = $dbh->prepare($query);
-			// 	$res->execute();
-			// 	$result = $res->fetch(PDO::FETCH_ASSOC);
-			
-		if($result===false){
-			//not found, generate
-			$hash="build".generateRandomString($numHashChars);
-			//need to check if unique
-			
-			$query="insert into hashtag (site_value,hash,lastupdate) values ('$key','$hash', now())";
-			$result = mysql_insert($query);
-		}else{
-			$hash=$result['hash'];
-		}
-		$return['results']=array("tag"=>$hash);
+	case "getTag": 
+		$return['tag']=get_hash($key);
 	break;
 
 }
+$return['error']=$return['error']."; ".$error;
 
 die(json_encode($return));
+
 ?>
