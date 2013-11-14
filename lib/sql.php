@@ -64,4 +64,28 @@ function mysql_insert($query){
 	}
 }
 
+function mysql_update($query){
+	global $dbh, $error;
+	$res = $dbh->prepare($query);
+	if (!$res) {
+	    echo "\nPDO::errorInfo():\n";
+	    print_r($dbh->errorInfo());
+	}
+	$res->execute();
+	$errors=$res->errorInfo();
+	if(is_array($errors) && !empty($errors[2])){
+		$error.=$query."<br>";
+		$error.='<pre>'.print_r($res->errorInfo(),true).'</pre>';
+		return false;
+	}
+	
+	if (!$res) {
+	    $error.="\nPDO::errorInfo():\n";
+	    $error.='<pre>'.print_r($dbh->errorInfo(),true).'</pre>';
+	    return false;
+	}else{
+		return true;
+	}
+}
+
 ?>
