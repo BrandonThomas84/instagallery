@@ -42,6 +42,7 @@ $result = mysql_fetchAll($query);
   
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/bootbox.min.js"></script>
 	<script type="text/javascript" src="../js/scripts.js"></script>
 </head>
 
@@ -74,7 +75,7 @@ $result = mysql_fetchAll($query);
 			foreach ($result as $row)
 			{
 			   echo '<tr id="ordrrow-'.$row["id"].'">';
-			   echo '<td> <a class="btn btn-danger block-photo" href="" id="'.$row["id"].'">Block</a> <a class="btn btn-success approve-photo" href="" id="'.$row["id"].'">Approve</a> </td>';
+			   echo '<td> <a class="btn btn-danger block-photo" href="#" id="'.$row["id"].'">Block</a> <a class="btn btn-success approve-photo" href="#" id="'.$row["id"].'">Approve</a> </td>';
 			   echo "<td>".$row["id"]."</td>";
 			   echo "<td>".$row["hash"]."</td>";
 			   echo "<td>".$row["site_value"]."</td>";
@@ -91,9 +92,10 @@ $result = mysql_fetchAll($query);
 </body>
 </html>
 
-<script>
+<script type="text/javascript">
+
 $('.block-photo').click(function(e) {
-    var id = $(this).attr('id').substr(4);
+    var id = $(this).attr('id');
     e.preventDefault();
     bootbox.confirm("Are you sure? ", function(r) {
         if (r) {
@@ -123,7 +125,7 @@ $('.block-photo').click(function(e) {
 
 
 $('.approve-photo').click(function(e) {
-    var id = $(this).attr('id').substr(4);
+    var id = $(this).attr('id');
     e.preventDefault();
     bootbox.confirm("Are you sure? ", function(r) {
         if (r) {
