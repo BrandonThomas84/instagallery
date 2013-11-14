@@ -49,6 +49,11 @@ $result = mysql_fetchAll($query);
 <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
+
+      <div class="logo">
+        <img src="../img/InstaGalleryLogo.png" />
+      </div>
+
 			<div class="jumbotron well">
 				<h1>
 					Approve!
