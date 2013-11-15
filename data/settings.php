@@ -1,11 +1,22 @@
 <?php
 
 $error="";
+$currenturl = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
 /* db connect */
-$dbname="instagallery";
-$user="root";
-$pass="root";
+if (false !== strpos($currenturl,'local')) {
+	$dbname="instagallery";
+	$user="root";
+	$pass="root";
+	$dbhost="localhost";
+} else {
+/* db connect production */
+	$dbname="instagallery";
+	$user="ngoc";
+	$pass="CwioKnVW";
+	$dbhost="tunnel.pagodabox.com";
+}
+
 
 /* hash */
 $numHashChars=4;
