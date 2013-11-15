@@ -18,6 +18,7 @@ function get_hash($key){
 		$query="select hash from hashtag where site_value='$key'";
 		$result = mysql_fetch($query);
 	if($result===false){
+		$numHashChars = 5;
 		//not found, generate
 		$hash="build".generateRandomString($numHashChars);
 		//need to check if unique

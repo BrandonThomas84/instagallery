@@ -114,7 +114,7 @@
 	<body>
 		<script>
 			(function() {
-			  var instaGalleryAPI = "api/index.php?a=getPhotos&k=sam1234&f=j&l=5";
+			  var instaGalleryAPI = "api/index.php?a=getPhotos&k=buildXXYY&f=j&l=5";
 			  $.getJSON( instaGalleryAPI, {
 			    format: "json"
 			  })
