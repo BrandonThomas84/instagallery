@@ -6,9 +6,9 @@ error_reporting(E_ALL);
 require_once(str_replace("/admin","",dirname(__FILE__))."/lib/sql.php");
 
 if(isset($_GET['filter'])){
-    $query="SELECT id, hash, site_value, approved, image_full, image_thumb FROM hashdetail where hash='".$_GET['filter']."';";
+    $query="SELECT hashtag.origin, hashdetail.id, hashdetail.hash, hashdetail.username, hashdetail.site_value, hashdetail.approved, hashdetail.image_full, hashdetail.image_thumb FROM hashdetail inner join hashtag on hashdetail.hash=hashtag.hash where hashdetail.hash='".$_GET['filter']."';";
 }else{
-    $query="SELECT id, hash, site_value, approved, image_full, image_thumb FROM hashdetail where approved=0;";
+    $query="SELECT hashtag.origin, hashdetail.id, hashdetail.hash, hashdetail.username, hashdetail.site_value, hashdetail.approved, hashdetail.image_full, hashdetail.image_thumb FROM hashdetail inner join hashtag on hashdetail.hash=hashtag.hash where hashdetail.approved=0;";
 }
 $result = mysql_fetchAll($query);
 
@@ -89,7 +89,7 @@ $result = mysql_fetchAll($query);
 			   echo '<td> <a class="btn btn-danger block-photo" href="" id="'.$row["id"].'">Block</a> <a class="btn btn-success approve-photo" href="" id="'.$row["id"].'">Approve</a> </td>';
 			   echo '<td id="status_'.$row["id"].'">'.$statusvalue[$row["approved"]].'</td>';
 			   echo "<td>".$row["hash"]."</td>";
-			   echo "<td>".$row["site_value"]."</td>";
+			   echo '<td><a href="'.$row["origin"].'" target="_blank">'.$row["site_value"].'</a></td>';
 			   echo '<td> <a rel="'.$row["image_full"].'" class="screenshot"><img src="'.$row["image_thumb"].'"></a></td>';
 
 			   echo "</tr>";

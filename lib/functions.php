@@ -22,8 +22,9 @@ function get_hash($key){
 		//not found, generate
 		$hash="build".generateRandomString($numHashChars);
 		//need to check if unique
-		
-		$query="insert into hashtag (site_value,hash,lastupdate) values ('$key','$hash', now())";
+		$originurl = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+
+		$query="insert into hashtag (site_value,hash,lastupdate,origin) values ('$key','$hash', now(),'$originurl')";
 		$result = mysql_insert($query);
 	}else{
 		$hash=$result['hash'];
