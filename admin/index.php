@@ -69,7 +69,7 @@ $result = mysql_fetchAll($query);
       <form action="./" method="get">
         <label>Filter by Hashtag: </label><input name="filter" type="txt">
       </form>
-      <a href="cron/instaCron.php?refresh=Now">Refresh</a>
+      <a href="../cron/instaCron.php?refresh=Now">Refresh</a>
 <?php
 
 			echo '<table class="table table-hover table-condensed table-bordered" id="approvetable">';
@@ -120,7 +120,7 @@ $('.block-photo').click(function(e) {
             //sent request to delete order with given id
             $.ajax({
                 type: 'post',
-                url: site_url + 'admin/approvephoto.php',
+                url: 'approvephoto.php',
                 data: {row_id: id, task: 'block'},
                 success: function(b) {
                     if (b) {
@@ -157,7 +157,7 @@ $('.approve-photo').click(function(e) {
             //sent request to delete order with given id
             $.ajax({
                 type: 'post',
-                url: site_url + 'admin/approvephoto.php',
+                url: 'approvephoto.php',
                 data: {row_id: id, task: "approve"},
                 success: function(b) {
                     if (b) {

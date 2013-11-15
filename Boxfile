@@ -1,0 +1,6 @@
+web1:
+  name: vilma
+  php_extensions:
+    - sockets
+    - pdo_mysql
+    - curl
