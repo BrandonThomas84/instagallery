@@ -34,6 +34,7 @@
 }
 #instagallery_hash_tag_helper{
 	position: absolute;
+	bottom: 90%;
 	left: 20px;
 	z-index: 1000;
 	background: rgba(255,255,255,.95);
