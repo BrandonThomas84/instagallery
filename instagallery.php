@@ -114,13 +114,13 @@
 	<body>
 		<script>
 			(function() {
-			  var instaGalleryAPI = site_url + "api/index.php?a=getPhotos&k=sam1234&f=j&l=5";
+			  var instaGalleryAPI = "api/index.php?a=getPhotos&k=sam1234&f=j&l=5";
 			  $.getJSON( instaGalleryAPI, {
 			    format: "json"
 			  })
 			    .done(function(data){
 			    	$( '#hash_tag' ).html( "#"+ data.tag +"<div id=\"hash_tag_helper\">Show us your goodies! Upload your photo of this product to Instagram with the tag: <span style=\"font-weight:bold; color: #336699;\">#"+ data.tag +" </span>and we will add it to our page.</div>" );
-                    $('a#gallerylink').attr("href", site_url + "gallery.php?filter="+ data.tag)
+                    $('a#gallerylink').attr("href", "gallery.php?filter="+ data.tag)
 			    	if( data.results != "" ){ 
 			    		$.each( data.results , function( i, item ){
 			    			$( "<img>" ).attr( "src", item.thumb ).attr( "height", "50px" ).attr( "width", "50px" ).attr( "border", "0" ).appendTo( "#grams" );
