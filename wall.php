@@ -29,9 +29,9 @@ if(isset($_REQUEST['tag'])){
                 <param name="allowFullScreen" value="true"/>
                 <param name="allowScriptAccess" value="always"/>
                 <param name="bgColor" value="#000000" />
-                <param name="flashvars" value="http://local.instagallery.com/data/rss.php?tag=<?php echo $tag ?>&amp;backgroundalpha=0.0&amp;numRows=3&amp;showEmbed=false&amp;showChrome=false&amp;showFullScreen=false" />
+                <param name="flashvars" value="http://buildinstagallery.gopagoda.com/data/rss.php?tag=<?php echo $tag ?>&amp;backgroundalpha=0.0&amp;numRows=3&amp;showEmbed=false&amp;showChrome=false&amp;showFullScreen=false" />
                 <param name="wmode" value="transparent" />
-                <embed id="ci_25733_e" type="application/x-shockwave-flash" src="http://apps.cooliris.com/embed/cooliris.swf" width="100%" height="575" allowFullScreen="true" allowScriptAccess="always" bgColor="#000000" flashvars="feed=http://local.instagallery.com/data/rss.php?tag=<?php echo $tag ?>&amp;backgroundalpha=0.0&amp;numRows=3&amp;showEmbed=false&amp;showChrome=false&amp;showFullScreen=false" wmode="transparent"></embed>
+                <embed id="ci_25733_e" type="application/x-shockwave-flash" src="http://apps.cooliris.com/embed/cooliris.swf" width="100%" height="575" allowFullScreen="true" allowScriptAccess="always" bgColor="#000000" flashvars="feed=http://buildinstagallery.gopagoda.com/data/rss.php?tag=<?php echo $tag ?>&amp;backgroundalpha=0.0&amp;numRows=3&amp;showEmbed=false&amp;showChrome=false&amp;showFullScreen=false" wmode="transparent"></embed>
             </object>
         </div>
 

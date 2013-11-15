@@ -10,7 +10,7 @@ $mysql_results = mysql_fetchAll($mysql_query);
     <channel>
         <title><?php echo $tag; ?></title>
         <description><?php echo $tag; ?> WALL</description>
-        <link>http://local.instagallery.com/</link>
+        <link>http://buildinstagallery.gopagoda.com/</link>
         <?php foreach($mysql_results as $key => $result):
                 $imgSm = $result['image_thumb'];
                 $imgLg = $result['image_full'];
