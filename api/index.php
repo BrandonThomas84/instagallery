@@ -56,6 +56,6 @@ switch($action){
 }
 $return['error']=$return['error']."; ".$error;
 
-die(json_encode($return));
+die($_REQUEST['callback'].'('. json_encode($return) . ');');
 
 ?>
