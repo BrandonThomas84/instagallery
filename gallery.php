@@ -15,16 +15,14 @@ else
 }
 $result = mysql_fetchAll($query);
 
-
 ?>
-
 <html>
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		<title>Instagallery</title>
 		<link rel="stylesheet" href="css/basic.css" type="text/css" />
 		<link rel="stylesheet" href="css/galleriffic-2.css" type="text/css" />
-		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.galleriffic.js"></script>
 		<script type="text/javascript" src="js/jquery.opacityrollover.js"></script>
 		<!-- We only want the thunbnails to display when javascript is disabled -->
@@ -35,7 +33,7 @@ $result = mysql_fetchAll($query);
 	<body>
 		<div id="page">
 			<div id="container">
-				<h1><div class="logo"><img src="img/InstaGalleryLogo.png" /></div></h1>
+				<h1><div class="logo"><img src="img/InstaGalleryLogo.png" height="55px" /></div></h1>
 
 				<!-- Start Advanced Gallery Html Containers -->
 				<div id="gallery" class="content">
