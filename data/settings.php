@@ -7,7 +7,7 @@ $currenturl = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 if (false !== strpos($currenturl,'local')) {
 	$dbname="instagallery";
 	$user="root";
-	$pass="root";
+	$pass="snapple";
 	$dbhost="localhost";
 } else {
 /* db connect production */
