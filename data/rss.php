@@ -1,7 +1,7 @@
 <?php
 require_once(str_replace("/data","",dirname(__FILE__))."/lib/functions.php");
 $tag = $_GET['tag'];
-$mysql_query = 'SELECT * FROM hashdetail where hash = "'.$tag.'" and approved=1';
+$mysql_query = 'SELECT * FROM hashdetail where approved=1';
 
 $mysql_results = mysql_fetchAll($mysql_query);
 ?>

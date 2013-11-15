@@ -63,6 +63,7 @@ $result = mysql_fetchAll($query);
 	                        echo '<div class="image-title"><a target="_blank" href="http://instagram.com/'.$row["username"].'">@'.$row["username"].'</a></div>';
 	                    }
                         echo '<div class="image-desc">'.$row["text"].'</div>';
+                        echo '<div class="image-desc"><a href="wall.php">View Wall</a></div>';
                         echo '</div>';
                         echo '</li>';
 
